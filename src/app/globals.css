@@ -1,0 +1,670 @@
+/* ==========================================================
+   Zumi design tokens
+   ========================================================== */
+:root {
+  --bg: #0d0a0e;
+  --bg-raised: #1a1418;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --text: #ffffff;
+  --text-soft: #cfc7cf;
+  --text-mute: #9e939d;
+  --pink: #ff3d71;
+  --pink-hover: #ff5a86;
+  --pink-soft: #ff7a9a;
+  --purple: #6d28d9;
+  --magenta: #e85cff;
+
+
+  --container: 1180px;
+  --gutter: clamp(16px, 5vw, 64px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 76px);
+}
+
+/* ==========================================================
+   Backdrop (blobs, arc, bottom wave)
+   ========================================================== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.blob--tl {
+  width: 260px;
+  height: 260px;
+  left: -150px;
+  top: -70px;
+  background: radial-gradient(circle at 65% 65%, #5b1f86 0%, #3a1257 55%, transparent 72%);
+}
+
+.blob--bl {
+  width: 300px;
+  height: 300px;
+  left: -190px;
+  bottom: 60px;
+  background: radial-gradient(circle at 70% 40%, #5b1f86 0%, #34104f 55%, transparent 72%);
+  opacity: 0.85;
+}
+
+.blob--r {
+  width: 340px;
+  height: 520px;
+  right: -230px;
+  top: 28%;
+  background: radial-gradient(ellipse at 30% 50%, #5a1f72 0%, #3a1250 50%, transparent 72%);
+  opacity: 0.9;
+}
+
+.arc {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: clamp(90px, 15vh, 150px);
+}
+
+/* ==========================================================
+   Navbar
+   ========================================================== */
+.nav {
+  position: relative;
+  z-index: 5;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 76px;
+  padding: 0 50px 0 66px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+}
+
+.nav__brand img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.nav__links {
+  display: flex;
+  gap: 44px;
+  height: 76px;
+}
+
+.nav__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  color: #e9e3e8;
+  transition: color 0.2s;
+}
+
+.nav__link:hover {
+  color: #fff;
+}
+
+.nav__link.is-active {
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--pink);
+}
+
+.nav .btn {
+  justify-self: end;
+}
+
+/* ==========================================================
+   Buttons, pill, typography
+   ========================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #1a0b10;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  box-shadow: 0 10px 30px -10px rgba(255, 61, 113, 0.7);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+  background: var(--pink-hover);
+  transform: translateY(-1px);
+}
+
+.btn--sm {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 14px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 42px;
+  padding: 0 22px 0 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-strong);
+  font-size: 16px;
+  color: #ece6eb;
+}
+
+.pill__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(38px, 5.4vw, 70px);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.headline--xl {
+  font-size: clamp(40px, 6.4vw, 82px);
+  line-height: 1.04;
+}
+
+@media (max-width: 560px) {
+  .headline {
+    white-space: normal;
+  }
+}
+
+.headline--md {
+  font-size: clamp(32px, 4vw, 52px);
+}
+
+/* "Grow Together." — white into pink */
+.grad {
+  background: linear-gradient(90deg, #ffe3ea 0%, #ff8aa8 28%, var(--pink) 60%, var(--pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* "...vel up." — tail of the word fades from white to pink */
+.grad-tail {
+  background: linear-gradient(90deg, #ffffff 0%, #ff8aa8 30%, var(--pink) 55%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.4;
+  color: var(--text-soft);
+}
+
+/* ==========================================================
+   Hero layout
+   ========================================================== */
+.hero {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "copy art"
+    "strip strip";
+}
+
+.hero__copy {
+  grid-area: copy;
+  position: relative;
+  z-index: 2;
+  padding-left: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero__art {
+  grid-area: art;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__strip {
+  grid-area: strip;
+  position: relative;
+  z-index: 3;
+}
+
+/* About / Home */
+.hero--about .hero__copy {
+  padding-top: 84px;
+}
+
+.hero--about .pill {
+  margin-bottom: 26px;
+}
+
+.hero--about .lead {
+  margin-top: 30px;
+  margin-bottom: 34px;
+}
+
+.hero--about .hero__art {
+  margin-top: 30px;
+  margin-right: -20px;
+  margin-left: 40px;
+  height: 470px;
+}
+
+.hero--about .zumi {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 600px;
+  max-width: 120%;
+}
+
+.hero--about .hero__strip {
+  padding: 0 105px;
+  margin-top: -6px;
+}
+
+/* Features */
+.hero--features .hero__copy {
+  padding-left: 76px;
+  padding-top: 170px;
+}
+
+.hero--features .lead {
+  margin-top: 24px;
+  font-size: clamp(16px, 1.6vw, 20px);
+}
+
+.hero--features .hero__art {
+  height: 440px;
+  margin-top: 30px;
+}
+
+.hero--features .zumi {
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 560px;
+  max-width: 120%;
+}
+
+.hero--features .hero__strip {
+  padding: 0 120px 0 150px;
+}
+
+/* ==========================================================
+   Mascot + blink
+   ========================================================== */
+.zumi {
+  aspect-ratio: 1 / 1;
+  /* fade the square render into the page background */
+  -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 72%, transparent 100%);
+}
+
+.zumi img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.zumi__lids {
+  opacity: 0;
+  animation: blink 5s infinite;
+}
+
+/* single blink, pause, then a quick double blink */
+@keyframes blink {
+  0%, 40% { opacity: 0; }
+  41%, 44% { opacity: 1; }
+  45%, 82% { opacity: 0; }
+  83%, 85% { opacity: 1; }
+  86%, 88% { opacity: 0; }
+  89%, 91% { opacity: 1; }
+  92%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zumi__lids { animation: none; }
+}
+
+/* decorative accents */
+.sparks {
+  position: absolute;
+  z-index: 2;
+  width: 58px;
+  height: 58px;
+}
+
+.sparks--about {
+  left: 0;
+  top: 0;
+}
+
+.sparks--features {
+  left: 18%;
+  top: 2%;
+}
+
+.bulb {
+  position: absolute;
+  z-index: 2;
+  width: 76px;
+  height: 76px;
+  right: 40px;
+  top: 10px;
+  filter: drop-shadow(0 0 10px rgba(232, 92, 255, 0.7));
+}
+
+/* ==========================================================
+   Feature strip
+   ========================================================== */
+.strip {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.strip__item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 4px 24px;
+}
+
+.strip__item + .strip__item {
+  border-left: 1px solid var(--line-strong);
+}
+
+.strip__icon {
+  flex: none;
+  color: var(--pink);
+}
+
+.strip__title {
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ece6eb;
+}
+
+.strip__text {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--text-mute);
+}
+
+.strip--card {
+  min-height: 84px;
+  padding: 18px 0;
+  border-radius: 20px;
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(180deg, rgba(40, 30, 38, 0.72), rgba(24, 18, 23, 0.72));
+  backdrop-filter: blur(12px);
+}
+
+.strip--card .strip__item {
+  justify-content: flex-start;
+  padding-left: 60px;
+}
+
+.strip--card .strip__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ==========================================================
+   FAQ / simple pages
+   ========================================================== */
+.faq {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 70px var(--gutter) 200px;
+}
+
+.faq--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.faq__head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.faq__list {
+  display: grid;
+  gap: 14px;
+}
+
+.faq__item {
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: rgba(30, 22, 28, 0.7);
+  padding: 20px 24px;
+}
+
+.faq__item summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 17px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq__item summary::after {
+  content: "+";
+  color: var(--pink);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.faq__item[open] summary::after {
+  content: "–";
+}
+
+.faq__item p {
+  margin-top: 12px;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width: 1100px) {
+  .hero__copy,
+  .hero--features .hero__copy {
+    padding-left: var(--gutter);
+  }
+  .hero--about .hero__strip,
+  .hero--features .hero__strip {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+  .strip--card .strip__item {
+    padding-left: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav__inner {
+    padding: 0 var(--gutter);
+    grid-template-columns: auto 1fr auto;
+  }
+  .nav__links {
+    gap: 20px;
+    justify-content: center;
+  }
+  .nav__brand span {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-areas: "copy" "art" "strip";
+    padding-bottom: 140px;
+  }
+  .hero--about .hero__copy,
+  .hero--features .hero__copy {
+    padding-top: 48px;
+  }
+  .hero--about .hero__art,
+  .hero--features .hero__art {
+    height: auto;
+    margin: 20px 0 0;
+  }
+  .hero--about .zumi,
+  .hero--features .zumi {
+    position: relative;
+    right: auto;
+    width: min(520px, 100%);
+    margin: 0 auto;
+  }
+  .bulb {
+    top: 0;
+    right: var(--gutter);
+  }
+  .strip {
+    flex-wrap: wrap;
+    gap: 14px 0;
+  }
+  .strip__item {
+    flex: 1 1 50%;
+    justify-content: flex-start;
+  }
+  .strip__item + .strip__item {
+    border-left: 0;
+  }
+  .strip--card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hide-sm {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav .btn--sm {
+    display: none;
+  }
+  .nav__inner {
+    grid-template-columns: auto 1fr;
+  }
+  .nav__links {
+    gap: 14px;
+  }
+  .nav__link {
+    font-size: 13px;
+  }
+  .nav .btn--sm {
+    padding: 0 14px;
+    font-size: 13px;
+  }
+  .strip__item {
+    flex-basis: 100%;
+  }
+}
