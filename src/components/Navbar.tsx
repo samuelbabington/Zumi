@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { href: "/", label: "Home" },
@@ -35,9 +36,12 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <Link href="/get-started" className="btn btn--sm">
-          Get Started <ArrowRight size={15} strokeWidth={2.5} />
-        </Link>
+        <div className="nav__actions">
+          <ThemeToggle />
+          <Link href="/get-started" className="btn btn--sm">
+            Get Started <ArrowRight size={15} strokeWidth={2.5} />
+          </Link>
+        </div>
       </div>
     </header>
   );

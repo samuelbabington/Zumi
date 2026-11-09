@@ -1,3 +1,4 @@
+import { ViewTransition } from "react";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -22,11 +23,26 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable}`}
+      data-theme="dark"
+      suppressHydrationWarning
+    >
+      <head>
+        {/* apply the saved theme before first paint to avoid a flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("zumi-theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         <Backdrop />
         <Navbar />
-        <main className="main">{children}</main>
+        <main className="main">
+          <ViewTransition default="page">{children}</ViewTransition>
+        </main>
       </body>
     </html>
   );
