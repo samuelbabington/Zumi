@@ -36,6 +36,7 @@ export default function Backdrop() {
         />
         <path
           d="M0 150 C 260 95, 460 120, 700 150 S 1120 190, 1440 110 L1440 220 L0 220 Z"
+          className="wave__shade"
           fill="#0d0a0e"
           opacity="0.55"
         />
