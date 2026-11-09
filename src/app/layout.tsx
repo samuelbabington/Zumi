@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Backdrop from "@/components/Backdrop";
 import "./globals.css";
+import "./auth.css";
 
 const display = Plus_Jakarta_Sans({
   variable: "--font-display",

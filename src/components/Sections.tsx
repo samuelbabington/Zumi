@@ -33,7 +33,7 @@ export function HomeHero({ next, primary }: SectionProps) {
           Quizzes, study tools and friends — all in one place
           <br className="hide-sm" /> with Zumi the pangolin by your side.
         </p>
-        <Link href="/get-started" className="btn">
+        <Link href="/sign-up" className="btn">
           Get Started <ArrowRight size={18} strokeWidth={2.5} />
         </Link>
       </div>
@@ -123,7 +123,7 @@ export function AboutHero({ next, primary }: SectionProps) {
           Zumi is a social learning and gaming platform
           <br className="hide-sm" /> for curious minds.
         </p>
-        <Link href="/get-started" className="btn">
+        <Link href="/sign-up" className="btn">
           Join the Community <ArrowRight size={18} strokeWidth={2.5} />
         </Link>
       </div>

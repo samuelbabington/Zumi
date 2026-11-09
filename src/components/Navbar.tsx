@@ -38,7 +38,7 @@ export default function Navbar() {
 
         <div className="nav__actions">
           <ThemeToggle />
-          <Link href="/get-started" className="btn btn--sm">
+          <Link href="/sign-up" className="btn btn--sm">
             Get Started <ArrowRight size={15} strokeWidth={2.5} />
           </Link>
         </div>
